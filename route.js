@@ -176,11 +176,11 @@ const initMobileMenu = () => {
 // Initialize Homepage
 const init = async () => {
   await Promise.all([
-    loadComponent("#header", "./component/header.html"),
-    loadComponent("#footer", "./component/footer.html"),
-    loadComponent("#carousel", "./component/carousel.html"),
-    loadComponent("#donate", "./component/donate.html"),
-    loadComponent("#partners", "./component/partners.html")
+    loadComponent("#header", "component/header.html"),
+    loadComponent("#footer", "component/footer.html"),
+    loadComponent("#carousel", "component/carousel.html"),
+    loadComponent("#donate", "component/donate.html"),
+    loadComponent("#partners", "component/partners.html")
   ]);
 
   await loadPosts();
