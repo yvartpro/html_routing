@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="L'impact de l'éducation à Rumonge - Découvrez comment le CCI transforme des vies à travers l'éducation.">
-    <title>L'impact de l'éducation à Rumonge - CCI Rumonge</title>
+    <meta id="meta-description" name="description" content="">
+    <title id="page-title">Article - CCI Rumonge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +89,6 @@
                     <div class="sticky top-24">
                         <h3 class="text-xl font-black text-slate-900 mb-6 uppercase tracking-widest">Articles Connexes
                         </h3>
-
                         <div id="related-posts" class="space-y-6">
                             <!-- Related posts will be loaded here -->
                         </div>
@@ -104,24 +102,20 @@
                         <ol class="flex items-center space-x-2 text-sm">
                             <li><a href="/" class="text-blue-600 hover:text-blue-700 font-medium">Accueil</a></li>
                             <li class="text-slate-400">/</li>
-                            <li><a href="/news" class="text-blue-600 hover:text-blue-700 font-medium">News</a></li>
+                            <li><a href="/news.html" class="text-blue-600 hover:text-blue-700 font-medium">News</a></li>
                             <li class="text-slate-400">/</li>
-                            <li class="text-slate-600">L'impact de l'éducation à Rumonge</li>
+                            <li id="breadcrumb-title" class="text-slate-600">...</li>
                         </ol>
                     </nav>
 
                     <!-- Category & Date -->
-                    <div class="flex items-center gap-4 mb-6">
-                        <span
-                            class="px-4 py-2 bg-blue-100 text-blue-700 text-xs font-black uppercase tracking-widest rounded-full">Éducation</span>
-                        <span class="text-sm text-slate-500 font-medium">24 Décembre 2025</span>
-                        <span class="text-sm text-slate-500">•</span>
-                        <span class="text-sm text-slate-500 font-medium">5 min de lecture</span>
+                    <div id="post-meta" class="flex items-center gap-4 mb-6">
+                        <!-- Will be populated dynamically -->
                     </div>
 
                     <!-- Title -->
-                    <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
-                        L'impact de l'éducation à Rumonge
+                    <h1 id="post-title" class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                        <!-- Will be populated dynamically -->
                     </h1>
 
                     <!-- Author -->
@@ -131,139 +125,26 @@
                             CCI
                         </div>
                         <div class="ml-4">
-                            <div class="font-bold text-slate-900">Équipe CCI</div>
+                            <div id="post-author" class="font-bold text-slate-900">...</div>
                             <div class="text-sm text-slate-500">Centre Communautaire d'Iteba</div>
                         </div>
                     </div>
 
                     <!-- Featured Image -->
-                    <div class="relative h-96 rounded-3xl overflow-hidden mb-12">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
-                            alt="Education Impact" class="w-full h-full object-cover">
+                    <div id="featured-image" class="relative h-96 rounded-3xl overflow-hidden mb-12">
+                        <!-- Will be populated dynamically -->
                     </div>
 
                     <!-- Article Content -->
-                    <div class="article-content text-lg">
-                        <p class="text-xl font-medium text-slate-700 mb-8 leading-relaxed">
-                            Depuis sa création en 2015, le Centre Communautaire d'Iteba (CCI) a placé l'éducation au
-                            cœur de sa mission.
-                            À travers des programmes innovants et un engagement sans faille, nous transformons des vies
-                            et bâtissons un avenir meilleur pour la jeunesse de Rumonge.
-                        </p>
-
-                        <h2>Un Défi de Taille</h2>
-                        <p>
-                            Dans la région de Rumonge, de nombreux enfants issus de familles vulnérables font face à des
-                            obstacles majeurs
-                            dans leur parcours scolaire. Le manque de ressources financières, l'absence de matériel
-                            scolaire adéquat, et
-                            le besoin de soutien académique constituent des barrières significatives à leur réussite
-                            éducative.
-                        </p>
-
-                        <p>
-                            Face à cette réalité, le CCI a développé une approche holistique qui va au-delà de la simple
-                            fourniture de
-                            bourses scolaires. Notre programme éducatif intègre le tutorat personnalisé, la distribution
-                            de matériel
-                            scolaire, et un accompagnement psychosocial pour garantir le bien-être global de chaque
-                            enfant.
-                        </p>
-
-                        <h2>Des Résultats Concrets</h2>
-                        <p>
-                            Aujourd'hui, plus de 150 enfants bénéficient directement de notre programme d'éducation. Les
-                            résultats sont
-                            encourageants : 85% de nos bénéficiaires ont amélioré leurs performances académiques, et 92%
-                            ont maintenu
-                            une assiduité scolaire régulière tout au long de l'année.
-                        </p>
-
-                        <blockquote>
-                            "Grâce au CCI, j'ai pu continuer mes études et réaliser mon rêve de devenir enseignante.
-                            Aujourd'hui,
-                            je retourne dans ma communauté pour inspirer d'autres jeunes." - Marie, ancienne
-                            bénéficiaire
-                        </blockquote>
-
-                        <h3>Les Piliers de Notre Succès</h3>
-                        <ul>
-                            <li><strong>Bourses Scolaires Complètes</strong> : Couvrant les frais de scolarité, les
-                                uniformes, et les fournitures</li>
-                            <li><strong>Tutorat Académique</strong> : Sessions hebdomadaires avec des volontaires
-                                qualifiés</li>
-                            <li><strong>Suivi Personnalisé</strong> : Accompagnement individuel pour chaque enfant</li>
-                            <li><strong>Engagement Familial</strong> : Implication des parents dans le processus
-                                éducatif</li>
-                            <li><strong>Activités Parascolaires</strong> : Développement des compétences sociales et
-                                créatives</li>
-                        </ul>
-
-                        <h2>Témoignages de Transformation</h2>
-                        <p>
-                            Jean, 14 ans, était sur le point d'abandonner l'école lorsqu'il a rejoint notre programme.
-                            Aujourd'hui,
-                            il est parmi les meilleurs élèves de sa classe et aspire à devenir ingénieur. Son histoire
-                            n'est qu'un
-                            exemple parmi tant d'autres de vies transformées par l'éducation.
-                        </p>
-
-                        <p>
-                            Les enseignants des écoles partenaires témoignent également de l'impact positif de notre
-                            intervention.
-                            Ils constatent non seulement une amélioration des résultats académiques, mais aussi un
-                            changement d'attitude
-                            chez les enfants : plus de confiance en soi, plus de motivation, et un engagement accru dans
-                            leur apprentissage.
-                        </p>
-
-                        <h2>Vers l'Avenir</h2>
-                        <p>
-                            Notre vision pour les années à venir est ambitieuse mais réalisable. Nous souhaitons doubler
-                            le nombre de
-                            bénéficiaires d'ici 2027, tout en renforçant la qualité de notre accompagnement. Pour y
-                            parvenir, nous
-                            développons de nouveaux partenariats et innovons constamment dans nos méthodes pédagogiques.
-                        </p>
-
-                        <p>
-                            L'éducation est plus qu'un droit fondamental ; c'est la clé qui ouvre toutes les portes. Au
-                            CCI, nous
-                            croyons fermement que chaque enfant mérite cette chance, indépendamment de sa situation
-                            socio-économique.
-                            C'est cette conviction qui guide notre action quotidienne et nous pousse à aller toujours
-                            plus loin.
-                        </p>
-
-                        <h3>Comment Vous Pouvez Contribuer</h3>
-                        <p>
-                            Le succès de notre programme éducatif repose sur le soutien de notre communauté. Que vous
-                            soyez un
-                            volontaire potentiel, un donateur, ou simplement quelqu'un qui croit en notre mission, il
-                            existe de
-                            nombreuses façons de contribuer à transformer des vies par l'éducation.
-                        </p>
-
-                        <p>
-                            Ensemble, nous pouvons créer un avenir où chaque enfant de Rumonge a accès à une éducation
-                            de qualité
-                            et aux opportunités qu'elle offre. Rejoignez-nous dans cette mission transformatrice.
-                        </p>
+                    <div id="article-content" class="article-content text-lg">
+                        <!-- Will be populated dynamically -->
                     </div>
 
                     <!-- Tags -->
                     <div class="mt-12 pt-8 border-t border-slate-200">
-                        <div class="flex flex-wrap gap-3">
+                        <div id="post-tags" class="flex flex-wrap gap-3">
                             <span class="text-sm font-medium text-slate-500">Tags:</span>
-                            <a href="#"
-                                class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-full hover:bg-slate-200 transition-colors">Éducation</a>
-                            <a href="#"
-                                class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-full hover:bg-slate-200 transition-colors">Rumonge</a>
-                            <a href="#"
-                                class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-full hover:bg-slate-200 transition-colors">Impact
-                                Social</a>
-                            <a href="#"
-                                class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-full hover:bg-slate-200 transition-colors">Jeunesse</a>
+                            <!-- Will be populated dynamically -->
                         </div>
                     </div>
 
@@ -322,11 +203,11 @@
                             Aidez-nous à transformer plus de vies par l'éducation
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="/volontaires"
+                            <a href="/volontaires.html"
                                 class="px-8 py-4 bg-white text-blue-900 font-black rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:scale-105 uppercase tracking-widest text-sm">
                                 Devenir Volontaire
                             </a>
-                            <a href="/contact"
+                            <a href="/contact.html"
                                 class="px-8 py-4 bg-transparent border-2 border-white text-white font-black rounded-2xl hover:bg-white hover:text-blue-900 transition-all uppercase tracking-widest text-sm">
                                 Faire un Don
                             </a>
@@ -341,6 +222,12 @@
     <div id="footer"></div>
 
     <script type="module">
+        import { getPostById, getRelatedPosts } from './data/posts-data.js';
+
+        // Get post ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
         // Load components
         const loadComponent = async (selector, filePath) => {
             try {
@@ -356,20 +243,62 @@
             }
         };
 
+        // Load post content
+        const loadPostContent = () => {
+            if (!postId) {
+                window.location.href = '/news.html';
+                return;
+            }
+
+            const post = getPostById(postId);
+            if (!post) {
+                window.location.href = '/news.html';
+                return;
+            }
+
+            // Update page title and meta
+            document.getElementById('page-title').textContent = `${post.title} - CCI Rumonge`;
+            document.getElementById('meta-description').setAttribute('content', post.excerpt);
+
+            // Update breadcrumb
+            document.getElementById('breadcrumb-title').textContent = post.title;
+
+            // Update post meta
+            document.getElementById('post-meta').innerHTML = `
+        <span class="px-4 py-2 bg-blue-100 text-blue-700 text-xs font-black uppercase tracking-widest rounded-full">${post.category}</span>
+        <span class="text-sm text-slate-500 font-medium">${post.date}</span>
+        <span class="text-sm text-slate-500">•</span>
+        <span class="text-sm text-slate-500 font-medium">${post.readTime} de lecture</span>
+      `;
+
+            // Update title and author
+            document.getElementById('post-title').textContent = post.title;
+            document.getElementById('post-author').textContent = post.author;
+
+            // Update featured image
+            document.getElementById('featured-image').innerHTML = `
+        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover">
+      `;
+
+            // Update content
+            document.getElementById('article-content').innerHTML = post.content;
+
+            // Update tags
+            const tagsHTML = post.tags.map(tag => `
+        <a href="#" class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-full hover:bg-slate-200 transition-colors">${tag}</a>
+      `).join('');
+            document.getElementById('post-tags').innerHTML += tagsHTML;
+        };
+
         // Load related posts
         const loadRelatedPosts = () => {
             const relatedContainer = document.querySelector("#related-posts");
-            if (!relatedContainer) return;
+            if (!relatedContainer || !postId) return;
 
-            const relatedPosts = [
-                { title: "Innovation technologique au CCI", date: "20 Dec 2025", category: "Tech", image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=300&q=80" },
-                { title: "Success Story: LaSTAR Leadership", date: "15 Dec 2025", category: "Leadership", image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=300&q=80" },
-                { title: "Rapport : Projet TAXEL 2025", date: "10 Dec 2025", category: "Environnement", image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=300&q=80" },
-                { title: "Inauguration de l'Atelier Couture", date: "05 Dec 2025", category: "Social", image: "https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=300&q=80" }
-            ];
+            const relatedPosts = getRelatedPosts(postId, 4);
 
             relatedContainer.innerHTML = relatedPosts.map(post => `
-        <a href="#" class="block group">
+        <a href="post-detail?id=${post.id}" class="block group">
           <div class="relative h-32 rounded-2xl overflow-hidden mb-3">
             <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
@@ -383,7 +312,8 @@
         // Share functions
         window.shareToWhatsApp = () => {
             const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent("L'impact de l'éducation à Rumonge - CCI");
+            const post = getPostById(postId);
+            const text = encodeURIComponent(post ? post.title : "Article CCI");
             window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
         };
 
@@ -394,12 +324,12 @@
 
         window.shareToTwitter = () => {
             const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent("L'impact de l'éducation à Rumonge - CCI");
+            const post = getPostById(postId);
+            const text = encodeURIComponent(post ? post.title : "Article CCI");
             window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
         };
 
         window.shareToInstagram = () => {
-            // Instagram doesn't support direct web sharing, so we'll copy the link
             navigator.clipboard.writeText(window.location.href).then(() => {
                 alert("Lien copié! Collez-le dans votre story ou post Instagram.");
             });
@@ -477,6 +407,7 @@
                 loadComponent("#footer", "./component/footer.html")
             ]);
 
+            loadPostContent();
             loadRelatedPosts();
             initMobileMenu();
         };
