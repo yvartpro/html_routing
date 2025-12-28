@@ -1,72 +1,143 @@
-const baseUrl = "https://capbio.bi/"
-
 /**
- * Loads a template into a container
- * @param {string} selector - CSS selector for the container
- * @param {string} filePath - Path to the HTML file
+ * CCI Website Routing and Component Loading
  */
+
 const loadComponent = async (selector, filePath) => {
   try {
-    const response = await fetch(filePath)
-    if (!response.ok) throw new Error(`Failed to load ${filePath}`)
-    const html = await response.text()
-    const container = document.querySelector(selector)
+    const response = await fetch(filePath);
+    if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+    const html = await response.text();
+    const container = document.querySelector(selector);
     if (container) {
-      container.innerHTML = html
+      container.innerHTML = html;
     }
   } catch (err) {
-    console.error("Error loading component:", err.message)
+    console.error("Error loading component:", err.message);
   }
-}
+};
 
+/**
+ * Handles the Carousel Slider Logic
+ */
+const initCarousel = () => {
+  const inner = document.querySelector("#carousel-inner");
+  const nextBtn = document.querySelector("#next-btn");
+  const prevBtn = document.querySelector("#prev-btn");
+  if (!inner || !nextBtn || !prevBtn) return;
+
+  const slides = inner.children;
+  const slideCount = slides.length;
+  let currentIndex = 0;
+
+  const updateSlider = () => {
+    inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // Update dots if implemented
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, idx) => {
+      if (idx === currentIndex) {
+        dot.classList.add("bg-blue-500", "w-8");
+        dot.classList.remove("bg-white/40", "w-2");
+      } else {
+        dot.classList.remove("bg-blue-500", "w-8");
+        dot.classList.add("bg-white/40", "w-2");
+      }
+    });
+  };
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slideCount;
+    updateSlider();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+    updateSlider();
+  });
+
+  // Auto-play
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slideCount;
+    updateSlider();
+  }, 6000);
+
+  updateSlider();
+};
+
+/**
+ * Loads and renders 6 blog posts
+ */
 const loadPosts = async () => {
-  const postsContainer = document.querySelector("#posts")
-  if (!postsContainer) return
+  const postsContainer = document.querySelector("#posts");
+  if (!postsContainer) return;
 
-  fetch(`${baseUrl}api/post`)
-    .then(resp => {
-      if (!resp.ok) throw new Error(`Failed to load posts`)
-      return resp.json()
-    })
-    .then(data => {
-      const posts = data
-      postsContainer.innerHTML = posts.map(post => `
-      <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 flex flex-col h-full">
-        <div class="relative overflow-hidden group">
-          <img src="${baseUrl}${post.photo}" alt="${post.title}" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-        </div>
-        <div class="p-6 flex-grow">
-          <div class="flex items-center gap-2 mb-3">
-             <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 uppercase tracking-wider">Tech</span>
-             <span class="text-xs text-gray-400">5 min read</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-gray-900 leading-tight">${post.title}</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">${post.description}</p>
-        </div>
-        <div class="px-6 pb-6 mt-auto">
-          <a href="#" class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors group">
-            Read More 
-            <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-    `).join('')
-    })
-    .catch(err => console.error(err?.response || err.message))
-}
+  const mockPosts = [
+    { title: "L'impact de l'éducation à Rumonge", date: "24 Dec 2025", category: "Éducation", image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" },
+    { title: "Innovation technologique au CCI", date: "20 Dec 2025", category: "Tech", image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" },
+    { title: "Success Story: LaSTAR Leadership", date: "15 Dec 2025", category: "Leadership", image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" },
+    { title: "Rapport : Projet TAXEL 2025", date: "10 Dec 2025", category: "Environnement", image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=600&q=80" },
+    { title: "Inauguration de l'Atelier Couture", date: "05 Dec 2025", category: "Social", image: "https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=600&q=80" },
+    { title: "Volontariat : Une force collective", date: "01 Dec 2025", category: "Communauté", image: "https://images.unsplash.com/photo-1559027615-cd26736f5df4?auto=format&fit=crop&w=600&q=80" }
+  ];
 
-// Initialize
+  postsContainer.innerHTML = mockPosts.map(post => `
+    <article class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-slate-100 flex flex-col h-full group">
+      <div class="relative h-64 overflow-hidden">
+        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <div class="absolute top-4 left-4">
+          <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-white/90 backdrop-blur text-blue-700 shadow-sm">${post.category}</span>
+        </div>
+      </div>
+      <div class="p-8 flex-grow">
+        <div class="text-xs font-bold text-slate-400 mb-4 uppercase tracking-widest">${post.date}</div>
+        <h3 class="text-2xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-tight mb-4">${post.title}</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+      </div>
+      <div class="px-8 pb-8 pt-4">
+        <a href="#" class="inline-flex items-center text-xs font-black uppercase tracking-widest text-blue-600 hover:text-emerald-600 transition-colors group/link">
+          Lire la suite
+          <svg class="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </article>
+  `).join('');
+};
+
+/**
+ * Handles the Mobile Menu Toggle Logic
+ */
+const initMobileMenu = () => {
+  const menuBtn = document.querySelector("#mobile-menu-btn");
+  const mobileMenu = document.querySelector("#mobile-menu");
+
+  if (!menuBtn || !mobileMenu) return;
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // Close menu when clicking a link
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
+};
+
+// Initialize Homepage
 const init = async () => {
   await Promise.all([
     loadComponent("#header", "./component/header.html"),
-    loadComponent("#footer", "./component/footer.html")
-  ])
-  await loadPosts()
-}
+    loadComponent("#footer", "./component/footer.html"),
+    loadComponent("#carousel", "./component/carousel.html"),
+    loadComponent("#donate", "./component/donate.html"),
+    loadComponent("#partners", "./component/partners.html")
+  ]);
 
-init()
+  await loadPosts();
+  initCarousel();
+  initMobileMenu();
+};
 
-export const title = "Home page is now rendered"
+init();
+
+export const title = "CCI Rumonge – Centre Communautaire d'Iteba";
