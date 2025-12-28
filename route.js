@@ -58,7 +58,7 @@ const initCarousel = () => {
   setInterval(() => {
     currentIndex = (currentIndex + 1) % slideCount;
     updateSlider();
-  }, 6000);
+  }, 4000);
 
   updateSlider();
 };
