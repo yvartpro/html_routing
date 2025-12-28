@@ -103,23 +103,69 @@ const loadPosts = async () => {
 };
 
 /**
- * Handles the Mobile Menu Toggle Logic
+ * Handles the Mobile Menu Toggle Logic (Off-Canvas)
  */
 const initMobileMenu = () => {
   const menuBtn = document.querySelector("#mobile-menu-btn");
+  const closeBtn = document.querySelector("#mobile-menu-close");
   const mobileMenu = document.querySelector("#mobile-menu");
+  const overlay = document.querySelector("#mobile-menu-overlay");
 
-  if (!menuBtn || !mobileMenu) return;
+  if (!menuBtn || !mobileMenu || !overlay || !closeBtn) return;
 
-  menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
+  const openMenu = () => {
+    // Remove hidden first to allow transitions
+    overlay.classList.remove("hidden");
+    mobileMenu.classList.remove("hidden");
+
+    // Small delay to trigger CSS transitions
+    setTimeout(() => {
+      overlay.classList.remove("opacity-0");
+      overlay.classList.add("opacity-100");
+      mobileMenu.classList.remove("translate-x-full");
+      mobileMenu.classList.add("translate-x-0");
+    }, 10);
+
+    document.body.style.overflow = "hidden"; // Lock scroll
+  };
+
+  const closeMenu = () => {
+    overlay.classList.remove("opacity-100");
+    overlay.classList.add("opacity-0");
+    mobileMenu.classList.remove("translate-x-0");
+    mobileMenu.classList.add("translate-x-full");
+
+    // Add hidden after transition completes
+    setTimeout(() => {
+      overlay.classList.add("hidden");
+      mobileMenu.classList.add("hidden");
+    }, 500); // Match duration-500
+
+    document.body.style.overflow = ""; // Unlock scroll
+  };
+
+  menuBtn.addEventListener("click", openMenu);
+  closeBtn.addEventListener("click", closeMenu);
+
+  // Prevent any scroll or interaction on overlay, only close
+  overlay.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeMenu();
   });
+
+  // Prevent scroll on overlay
+  overlay.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+  }, { passive: false });
+
+  overlay.addEventListener("wheel", (e) => {
+    e.preventDefault();
+  }, { passive: false });
 
   // Close menu when clicking a link
   mobileMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-    });
+    link.addEventListener("click", closeMenu);
   });
 };
 
