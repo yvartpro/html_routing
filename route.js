@@ -126,7 +126,11 @@ const initMobileMenu = () => {
       mobileMenu.classList.add("translate-x-0");
     }, 10);
 
-    document.body.style.overflow = "hidden"; // Lock scroll
+    // Lock scroll on both html and body
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
   };
 
   const closeMenu = () => {
@@ -141,7 +145,11 @@ const initMobileMenu = () => {
       mobileMenu.classList.add("hidden");
     }, 500); // Match duration-500
 
-    document.body.style.overflow = ""; // Unlock scroll
+    // Unlock scroll
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.width = "";
   };
 
   menuBtn.addEventListener("click", openMenu);
