@@ -4,8 +4,9 @@
 
 const loadComponent = async (selector, filePath) => {
   try {
-    const response = await fetch(filePath);
-    if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+    const url = filePath.startsWith('/') ? filePath : new URL(filePath, import.meta.url).href;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Failed to load ${url}`);
     const html = await response.text();
     const container = document.querySelector(selector);
     if (container) {
@@ -70,8 +71,8 @@ const loadPosts = async () => {
   const postsContainer = document.querySelector("#posts");
   if (!postsContainer) return;
 
-  // Import posts data
-  const { getAllPosts } = await import('./data/posts-data.js');
+  // Import posts data (module-relative)
+  const { getAllPosts } = await import(new URL('./data/posts-data.js', import.meta.url).href);
   const allPosts = getAllPosts();
   const mockPosts = allPosts.slice(0, 6);
 
@@ -89,7 +90,7 @@ const loadPosts = async () => {
         <p class="text-slate-500 text-sm leading-relaxed">${post.excerpt}</p>
       </div>
       <div class="px-8 pb-8 pt-4">
-        <a href="post-detail?id=${post.id}" class="inline-flex items-center text-xs font-black uppercase tracking-widest text-blue-600 hover:text-emerald-600 transition-colors group/link">
+        <a href="/post-detail?id=${post.id}" class="inline-flex items-center text-xs font-black uppercase tracking-widest text-blue-600 hover:text-emerald-600 transition-colors group/link">
           Lire la suite
           <svg class="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
